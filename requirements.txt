@@ -1,0 +1,30 @@
+# RAG Pipeline Requirements
+# Core dependencies for PyMuPDF + LangChain + Sentence Transformers + ChromaDB + Gemini Pro
+
+# PDF processing
+PyMuPDF>=1.23.0
+
+# LangChain framework
+langchain-community
+langchain>=0.1.0
+langchain-google-genai>=1.0.0
+
+# Embeddings and ML
+sentence-transformers>=2.2.0
+torch>=2.0.0
+transformers>=4.30.0
+
+# Vector database
+chromadb>=0.4.0
+
+# Google AI integration
+google-generativeai>=0.3.0
+
+# Data processing and utilities
+numpy>=1.24.0
+pandas>=2.0.0
+tqdm>=4.65.0
+
+# Optional but recommended
+jupyter>=1.0.0
+ipykernel>=6.25.0
