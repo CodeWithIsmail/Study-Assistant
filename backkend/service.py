@@ -168,7 +168,7 @@ class RAGService:
         )
         
         # Create RAG chain
-        qa_prompt_template = """You are an AI Study Assistant. Answer the question clearly and concisely using the provided context.
+        qa_prompt_template = """You are an AI Study Assistant. Answer the question clearly and broad using the provided context.
 
 Context: {context}
 Question: {question}
