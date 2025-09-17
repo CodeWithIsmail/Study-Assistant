@@ -1,6 +1,12 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeHighlight from 'rehype-highlight';
 import { Bot, User, ExternalLink } from 'lucide-react';
 import type { Message } from '../types/chat';
+
+// Import highlight.js CSS for code syntax highlighting
+import 'highlight.js/styles/github-dark.css';
 
 interface ChatMessageProps {
   message: Message;
@@ -34,7 +40,86 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
           }
         `}>
           <div className="whitespace-pre-wrap break-words">
-            {message.content}
+            {isUser ? (
+              message.content
+            ) : (
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeHighlight]}
+                components={{
+                  // Custom styling for markdown elements
+                  code: ({ className, children, ...props }: React.HTMLProps<HTMLElement>) => {
+                    const match = /language-(\w+)/.exec(className || '');
+                    const isInline = !match;
+                    
+                    if (isInline) {
+                      return (
+                        <code
+                          className="bg-gray-200 dark:bg-gray-600 text-red-600 dark:text-red-400 px-1 py-0.5 rounded text-sm font-mono"
+                          {...props}
+                        >
+                          {children}
+                        </code>
+                      );
+                    }
+                    return (
+                      <pre className="bg-gray-900 text-gray-100 p-3 rounded-lg overflow-x-auto my-2 text-sm">
+                        <code className={className} {...props}>
+                          {children}
+                        </code>
+                      </pre>
+                    );
+                  },
+                  p: ({ children }) => (
+                    <p className="mb-2 last:mb-0 leading-relaxed">{children}</p>
+                  ),
+                  strong: ({ children }) => (
+                    <strong className="font-semibold">{children}</strong>
+                  ),
+                  em: ({ children }) => (
+                    <em className="italic">{children}</em>
+                  ),
+                  ul: ({ children }) => (
+                    <ul className="list-disc list-inside mb-2 space-y-1 ml-2">{children}</ul>
+                  ),
+                  ol: ({ children }) => (
+                    <ol className="list-decimal list-inside mb-2 space-y-1 ml-2">{children}</ol>
+                  ),
+                  li: ({ children }) => (
+                    <li className="text-inherit">{children}</li>
+                  ),
+                  blockquote: ({ children }) => (
+                    <blockquote className="border-l-4 border-blue-400 pl-3 italic my-2 opacity-80">
+                      {children}
+                    </blockquote>
+                  ),
+                  h1: ({ children }) => (
+                    <h1 className="text-lg font-bold mb-2 mt-3 first:mt-0">{children}</h1>
+                  ),
+                  h2: ({ children }) => (
+                    <h2 className="text-base font-semibold mb-2 mt-3 first:mt-0">{children}</h2>
+                  ),
+                  h3: ({ children }) => (
+                    <h3 className="text-sm font-semibold mb-1 mt-2 first:mt-0">{children}</h3>
+                  ),
+                  table: ({ children }) => (
+                    <div className="overflow-x-auto my-2">
+                      <table className="min-w-full border border-gray-300 dark:border-gray-600 text-sm">{children}</table>
+                    </div>
+                  ),
+                  th: ({ children }) => (
+                    <th className="border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 px-2 py-1 text-left font-semibold text-xs">
+                      {children}
+                    </th>
+                  ),
+                  td: ({ children }) => (
+                    <td className="border border-gray-300 dark:border-gray-600 px-2 py-1 text-xs">{children}</td>
+                  ),
+                }}
+              >
+                {message.content}
+              </ReactMarkdown>
+            )}
           </div>
           
           {/* Sources for assistant messages */}

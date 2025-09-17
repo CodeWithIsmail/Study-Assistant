@@ -25,9 +25,13 @@ python-dotenv>=1.0.0
 fastapi>=0.104.0
 uvicorn[standard]>=0.24.0
 
-# 🔹 FastAPI backend
-fastapi>=0.104.0
-uvicorn>=0.24.0
+# 🔹 User Authentication
+pymongo>=4.0.0
+motor>=3.0.0
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+python-multipart>=0.0.6
+email-validator>=2.0.0
 
 # Built-in Python modules used (no installation needed):
 # - os, io, uuid, typing (built-in)

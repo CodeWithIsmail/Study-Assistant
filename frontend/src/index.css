@@ -32,3 +32,89 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Dark mode scrollbar */
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-track {
+    background: #2d3748;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #4a5568;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #718096;
+  }
+}
+
+/* Form input styling */
+input, textarea {
+  color: #1a202c !important;
+  background-color: #ffffff !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #a0a0a0 !important;
+}
+
+/* Dark mode form inputs */
+@media (prefers-color-scheme: dark) {
+  input, textarea {
+    color: #e2e8f0 !important;
+    background-color: #2d3748 !important;
+    border-color: #4a5568 !important;
+  }
+  
+  input::placeholder, textarea::placeholder {
+    color: #a0aec0 !important;
+  }
+}
+
+/* Markdown content styles */
+code {
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+.markdown-content {
+  line-height: 1.6;
+}
+
+.markdown-content pre {
+  background-color: #1a202c !important;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
+
+.markdown-content code {
+  font-size: 0.875rem;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
