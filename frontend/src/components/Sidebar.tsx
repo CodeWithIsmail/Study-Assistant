@@ -2,7 +2,7 @@ import React from 'react';
 import { 
   MessageSquare, 
   //FileText, 
-  Settings, 
+  //Settings, 
   LogOut, 
   User,
   ChevronRight,
