@@ -177,8 +177,7 @@ Instructions:
 - If the CONTEXT provides only names, terms, or short points, then expand each one in detail using your own knowledge (definitions, purpose, examples, pros/cons).  
 - If the CONTEXT provides some explanation but not enough detail, merge the given explanation with your own knowledge to produce a richer, more complete answer.  
 - If the CONTEXT is completely empty or irrelevant, say:  
-  "No relevant context found. Answering from my general knowledge:"  
-  and then provide the best possible answer.  
+  "Dont say you dont have in context.  
 - Always explain thoroughly, not in one line. Use structured formats:
   - Definitions (if applicable)  
   - Key points or steps  

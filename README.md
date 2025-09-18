@@ -34,12 +34,12 @@ A comprehensive **Retrieval-Augmented Generation (RAG)** study assistant with mo
 │   (TypeScript)  │◄──►│   Backend       │◄──►│   User Data     │
 │   Auth + Chat   │    │   Auth + RAG    │    │   (Atlas/Local) │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
-         │                       │                       │
-         │              ┌─────────────────┐              │
-         │              │   JWT Auth      │              │
-         │              │   Middleware    │              │
-         │              └─────────────────┘              │
-         │                       │                       │
+         │                       │                       
+         │              ┌─────────────────┐              
+         │              │   JWT Auth      │              
+         │              │   Middleware    │              
+         │              └─────────────────┘              
+         │                       │                       
          │              ┌─────────────────┐    ┌─────────────────┐
          │              │   RAG Service   │◄──►│   ChromaDB      │
          └──────────────►│   (Business     │    │   Vector Store  │
