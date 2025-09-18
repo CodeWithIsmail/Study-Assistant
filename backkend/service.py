@@ -43,8 +43,8 @@ class RAGService:
         self.llm = ChatGoogleGenerativeAI(
             model="gemini-1.5-flash",
             google_api_key=api_key,
-            temperature=0.3,
-            max_output_tokens=512  # Reduced for faster responses
+            temperature=0.7,
+            max_output_tokens=1200  # Reduced for faster responses
         )
     
     def _initialize_memory(self):
@@ -163,16 +163,38 @@ class RAGService:
         self.retriever = self.vectorstore.as_retriever(
             search_type="similarity",  # Faster than similarity_score_threshold
             search_kwargs={
-                "k": 3  # Reduced from 5 for faster retrieval
+                "k": 5  # Reduced from 5 for faster retrieval
             }
         )
         
         # Create RAG chain
-        qa_prompt_template = """You are an AI Study Assistant. Answer the question clearly and broad using the provided context.
+        qa_prompt_template = """You are an expert assistant for software engineering courses such as Distributed Systems, Software Metrics, and related subjects.
 
-Context: {context}
-Question: {question}
-Answer:"""
+You will be given a QUESTION and some CONTEXT extracted from course materials (lecture notes, slides, PDFs, textbooks).
+
+Instructions:
+- Always use the CONTEXT as the starting point of your answer.  
+- If the CONTEXT provides only names, terms, or short points, then expand each one in detail using your own knowledge (definitions, purpose, examples, pros/cons).  
+- If the CONTEXT provides some explanation but not enough detail, merge the given explanation with your own knowledge to produce a richer, more complete answer.  
+- If the CONTEXT is completely empty or irrelevant, say:  
+  "No relevant context found. Answering from my general knowledge:"  
+  and then provide the best possible answer.  
+- Always explain thoroughly, not in one line. Use structured formats:
+  - Definitions (if applicable)  
+  - Key points or steps  
+  - Additional elaboration/examples from your knowledge  
+- Make sure the answer is clear, detailed, and student-friendly for exam preparation.
+
+---
+
+CONTEXT:
+{context}
+
+QUESTION:
+{question}
+
+ANSWER:
+zna-jeny-ihn"""
 
         qa_prompt = PromptTemplate(
             template=qa_prompt_template,
