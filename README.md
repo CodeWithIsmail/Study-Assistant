@@ -583,16 +583,22 @@ This project is open source and available under the MIT License.
 
 ## 🎨 Screenshots
 
+### Chat Interface
+![Study Assistant Chat Interface](screenshots/chat-interface.png)
+
+*Main chat interface showing the dark-themed design with real-time AI conversation, sidebar navigation, and responsive layout*
+
+### Key Visual Features:
+- **🌙 Dark Theme**: Professional gray color scheme with blue accents for optimal study sessions
+- **💬 Real-time Chat**: Interactive messaging with the AI assistant showing questions and detailed responses
+- **📁 Sidebar Navigation**: Clean sidebar with user options and session management
+- **📱 Responsive Design**: Mobile-friendly layout that works across all devices
+- **⚡ Fast Responses**: Quick AI-powered answers with source citations from your study materials
+
 ### Authentication Interface
 - **Login Page**: Clean dark-themed login form with email and password fields
 - **Signup Page**: User registration with full name, email, and password
 - **Responsive Design**: Mobile-friendly authentication flows
-
-### Chat Interface
-- **Dark Theme**: Professional gray color scheme with blue accents
-- **Real-time Chat**: Interactive messaging with the AI assistant
-- **Sidebar Navigation**: User options and session management
-- **Message History**: Persistent conversation tracking
 
 ### Admin Features
 - **PDF Management**: API endpoints for document administration
